@@ -12,8 +12,12 @@ import {RegisterEffect} from './store/effects/register.effect'
 import {BackendErrorMessagesModule} from '../shared/modules/backendErrorMessages/backendErrorMessages.module'
 import {PersistanceService} from '../shared/services/persistance.service'
 import {LoginEffect} from './store/effects/login.effect'
+import {LoginComponent} from './components/login/login.component'
 
-const routes: Routes = [{path: 'register', component: RegisterComponent}]
+const routes: Routes = [
+  {path: 'register', component: RegisterComponent},
+  {path: 'login', component: LoginComponent},
+]
 
 @NgModule({
   imports: [
@@ -24,7 +28,7 @@ const routes: Routes = [{path: 'register', component: RegisterComponent}]
     EffectsModule.forFeature([RegisterEffect, LoginEffect]),
     BackendErrorMessagesModule,
   ],
-  declarations: [RegisterComponent],
+  declarations: [RegisterComponent, LoginComponent],
   providers: [AuthService, PersistanceService],
 })
 export class AuthModule {}
