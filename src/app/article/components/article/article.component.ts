@@ -12,6 +12,7 @@ import {
 import {ArticleInterface} from '../../../shared/types/article.interface'
 import {currentUserSelector} from '../../../auth/store/selectors'
 import {CurrentUserInterface} from '../../../shared/types/currentUser.Interface'
+import {deleteArticleAction} from '../../store/actions/deleteArticle.action'
 
 @Component({
   selector: 'mc-article',
@@ -70,5 +71,9 @@ export class ArticleComponent implements OnInit, OnDestroy {
 
   fetchData(): void {
     this.store.dispatch(getArticleAction({slug: this.slug}))
+  }
+
+  deleteArticle(): void {
+    this.store.dispatch(deleteArticleAction({slug: this.slug}))
   }
 }

@@ -10,12 +10,14 @@ import {LoadingModule} from '../shared/modules/loading/loading.module'
 import {ArticleService as SharedArticleService} from '../shared/services/article.service'
 import {ArticleComponent} from './components/article/article.component'
 import {TagListModule} from '../shared/modules/tagList/tagList.module'
+import {ArticleService} from './services/article.service'
+import {DeleteArticleEffect} from './store/effects/deleteArticle.effect'
 
 const routes = [{path: 'articles/:slug', component: ArticleComponent}]
 @NgModule({
   imports: [
     CommonModule,
-    EffectsModule.forFeature([GetArticleEffect]),
+    EffectsModule.forFeature([GetArticleEffect, DeleteArticleEffect]),
     StoreModule.forFeature('article', reducers),
     RouterModule,
     ErrorMessageModule,
@@ -25,6 +27,6 @@ const routes = [{path: 'articles/:slug', component: ArticleComponent}]
   ],
   declarations: [ArticleComponent],
   exports: [],
-  providers: [SharedArticleService],
+  providers: [SharedArticleService, ArticleService],
 })
 export class ArticleModule {}
