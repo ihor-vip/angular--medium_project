@@ -1,12 +1,13 @@
 import {NgModule} from '@angular/core'
 import {CommonModule} from '@angular/common'
-import {UserProfileComponent} from './components/userProfile/userProfile.component'
 import {RouterModule} from '@angular/router'
 import {UserProfileService} from './services/userProfile.service'
 import {EffectsModule} from '@ngrx/effects'
 import {GetUserProfileEffect} from './store/effects/getUserProfile.effect'
 import {StoreModule} from '@ngrx/store'
 import {reducers} from './store/reducers'
+import {FeedModule} from '../shared/modules/feed/feed.module'
+import {UserProfileComponent} from './components/userProfile/userProfile.component'
 
 const routes = [
   {path: 'profiles/:slug', component: UserProfileComponent},
@@ -19,6 +20,7 @@ const routes = [
     RouterModule.forChild(routes),
     EffectsModule.forFeature([GetUserProfileEffect]),
     StoreModule.forFeature('userProfile', reducers),
+    FeedModule,
   ],
   declarations: [UserProfileComponent],
   providers: [UserProfileService],
