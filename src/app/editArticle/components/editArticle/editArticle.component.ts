@@ -7,6 +7,7 @@ import {getArticleAction} from '../../store/actions/getArticle.action'
 import {ArticleInputInterface} from '../../../shared/types/articleInput.interface'
 import {
   articleSelector,
+  isLoadingSelector,
   isSubmittingSelector,
   validationErrorsSelector,
 } from '../../store/selectors'
@@ -16,7 +17,6 @@ import {updateArticleAction} from '../../store/actions/updateArticle.action'
 @Component({
   selector: 'mc-edit-article',
   templateUrl: './editArticle.component.html',
-  styleUrls: ['./editArticle.component.scss'],
 })
 export class EditArticleComponent implements OnInit {
   initialValues$: Observable<ArticleInputInterface>
@@ -35,6 +35,7 @@ export class EditArticleComponent implements OnInit {
   initializeValues(): void {
     this.slug = this.route.snapshot.paramMap.get('slug')
     this.isSubmitting$ = this.store.pipe(select(isSubmittingSelector))
+    this.isLoading$ = this.store.pipe(select(isLoadingSelector))
     this.backendErrors$ = this.store.pipe(select(validationErrorsSelector))
     this.initialValues$ = this.store.pipe(
       select(articleSelector),

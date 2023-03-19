@@ -7,27 +7,19 @@ import {
   isSubmittingSelector,
   validationErrorsSelector,
 } from '../../store/selectors'
-import {AppStateInterface} from '../../../shared/types/appState.interface'
-import {AuthService} from '../../services/auth.service'
-import {CurrentUserInterface} from '../../../shared/types/currentUser.Interface'
 import {RegisterRequestInterface} from '../../types/registerRequest.interface'
 import {BackendErrorsInterface} from '../../../shared/types/backendErrors.interface'
 
 @Component({
   selector: 'mc-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
   form: FormGroup
   isSubmitting$: Observable<boolean>
   backendErrors$: Observable<BackendErrorsInterface | null>
 
-  constructor(
-    private fb: FormBuilder,
-    private store: Store<AppStateInterface>,
-    private authService: AuthService
-  ) {}
+  constructor(private fb: FormBuilder, private store: Store) {}
 
   ngOnInit(): void {
     this.initializeForm()
@@ -42,13 +34,12 @@ export class RegisterComponent implements OnInit {
   initializeForm(): void {
     this.form = this.fb.group({
       username: ['', Validators.required],
-      email: '',
-      password: '',
+      email: ['', Validators.required],
+      password: ['', Validators.required],
     })
   }
 
   onSubmit(): void {
-    console.log(this.form.value)
     const request: RegisterRequestInterface = {
       user: this.form.value,
     }

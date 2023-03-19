@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core'
-import {FormBuilder, FormGroup} from '@angular/forms'
+import {FormBuilder, FormGroup, Validators} from '@angular/forms'
 import {select, Store} from '@ngrx/store'
 import {Observable} from 'rxjs'
 import {
@@ -15,7 +15,6 @@ import {BackendErrorsInterface} from '../../../shared/types/backendErrors.interf
 @Component({
   selector: 'mc-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
   form: FormGroup
@@ -24,7 +23,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private store: Store<AppStateInterface>,
+    private store: Store,
     private authService: AuthService
   ) {}
 
@@ -40,13 +39,12 @@ export class LoginComponent implements OnInit {
 
   initializeForm(): void {
     this.form = this.fb.group({
-      email: '',
-      password: '',
+      email: ['', Validators.required],
+      password: ['', Validators.required],
     })
   }
 
   onSubmit(): void {
-    console.log(this.form.value)
     const request: LoginRequestInterface = {
       user: this.form.value,
     }

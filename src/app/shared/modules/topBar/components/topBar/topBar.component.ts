@@ -11,7 +11,6 @@ import {
 @Component({
   selector: 'mc-topBar',
   templateUrl: './topBar.component.html',
-  styleUrls: ['./topBar.component.scss'],
 })
 export class TopBarComponent implements OnInit {
   isLoggedIn$: Observable<boolean>

@@ -6,7 +6,6 @@ import {isLoggedInSelector} from '../../../../../auth/store/selectors'
 @Component({
   selector: 'mc-feed-toggler',
   templateUrl: './feedToggler.components.html',
-  styleUrls: ['./feedToggler.components.scss'],
 })
 export class FeeedTogglerComponent implements OnInit {
   @Input('tagName') tagNameProps: string | null

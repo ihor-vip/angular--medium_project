@@ -2,7 +2,6 @@ import {Component, OnDestroy, OnInit} from '@angular/core'
 import {select, Store} from '@ngrx/store'
 import {getArticleAction} from '../../store/actions/getArticle.action'
 import {ActivatedRoute} from '@angular/router'
-import {ArticleModule} from '../../article.module'
 import {combineLatest, map, Observable, Subscription} from 'rxjs'
 import {
   articleSelector,
@@ -17,11 +16,10 @@ import {deleteArticleAction} from '../../store/actions/deleteArticle.action'
 @Component({
   selector: 'mc-article',
   templateUrl: './article.component.html',
-  styleUrls: ['./article.component.scss'],
 })
 export class ArticleComponent implements OnInit, OnDestroy {
   slug: string
-  article: ArticleModule | null
+  article: ArticleInterface | null
   articleSubscription: Subscription
   isLoading$: Observable<boolean>
   error$: Observable<string | null>

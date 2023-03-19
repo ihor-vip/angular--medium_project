@@ -4,7 +4,6 @@ import {BackendErrorsInterface} from '../../../../types/backendErrors.interface'
 @Component({
   selector: 'mc-backend-error-messages',
   templateUrl: './backendErrorMessages.component.html',
-  styleUrls: ['./backendErrorMessages.component.scss'],
 })
 export class BackendErrorMessagesComponent implements OnInit {
   @Input('backendErrors') backendErrorProps: BackendErrorsInterface

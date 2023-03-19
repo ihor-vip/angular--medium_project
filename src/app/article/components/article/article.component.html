@@ -15,11 +15,16 @@
           </span>
         </div>
         <span *ngIf="isAuthor$ | async">
-          <a [routerLink]="['/articles', article['slug'], 'edit']" class="btn btn-outline-secondary btn-sm">
-            <i class="ion-edit"></i>
+          <a [routerLink]="['/articles', article['slug'], 'edit']"
+             class="btn btn-outline-secondary btn-sm"
+          ><i class="ion-edit"></i>
             Edit Article
           </a>
-          <button class="btn btn-outline-danger btn-sm" (click)="deleteArticle()">Delete Article</button>
+          <button class="btn btn-outline-danger btn-sm"
+                  (click)="deleteArticle()"
+          >
+            Delete Article
+          </button>
         </span>
       </div>
     </div>
@@ -33,7 +38,7 @@
         <div>
           <p>{{article['body']}}</p>
         </div>
-        <mc-tag-list [tags]="article['taglist']"></mc-tag-list>
+        <mc-tag-list [tags]="article['tagList']"></mc-tag-list>
       </div>
     </div>
   </div>

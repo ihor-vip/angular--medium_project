@@ -14,6 +14,7 @@ import {ArticleService} from './services/article.service'
 import {DeleteArticleEffect} from './store/effects/deleteArticle.effect'
 
 const routes = [{path: 'articles/:slug', component: ArticleComponent}]
+
 @NgModule({
   imports: [
     CommonModule,
@@ -26,7 +27,6 @@ const routes = [{path: 'articles/:slug', component: ArticleComponent}]
     RouterModule.forChild(routes),
   ],
   declarations: [ArticleComponent],
-  exports: [],
   providers: [SharedArticleService, ArticleService],
 })
 export class ArticleModule {}

@@ -12,7 +12,6 @@ import {
 @Component({
   selector: 'mc-popular-tags',
   templateUrl: './popularTags.component.html',
-  styleUrls: ['./popularTags.component.scss'],
 })
 export class PopularTagsComponent implements OnInit {
   popularTags$: Observable<PopularTagType[] | null>
